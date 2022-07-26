@@ -19,6 +19,7 @@ console.log(globalName);
 
 // 3. Constant
 //한번 할당하면 값을 변경할 수 없음
+//안전함
 const daysInWeek = 7;
 const maxNumber = 5;
 
