@@ -2,7 +2,7 @@
 // Vanila Javascript에서 사용
 'use strict';
 
-// 2. Variable
+// 2. Variable, rw(read/write)
 // let을 이용하여 변수 선언
 let globalName = 'global name';
 {
@@ -17,11 +17,21 @@ console.log(globalName);
 // var hoisting 문제
 // block scope이 없음
 
-// 3. Constant
+// 3. Constant, r(read only)
 //한번 할당하면 값을 변경할 수 없음
 //안전함
 const daysInWeek = 7;
 const maxNumber = 5;
+
+// Note!
+// Immutable data types: primitive types, frozen objects (i.e. object.freeze())
+// Mutable data types: all objects by default are mutable in JS
+// favor immutable data type always for a few reasons:
+//  - security
+//  - thread safety
+//  - reduce human mistakes
+// primitive type은 값이 메모리에 바로 저장
+// object type은 레퍼런스를 통해 메모리를 가리킴
 
 // 4. Variable types
 // 숫자 자료형 number (선언하지 않아도 사용 가능)
