@@ -70,8 +70,102 @@ function printMessage()
         console.log(message);
         let childMessage = 'hello';
     }
-    console.log(childMessage);  // 오류 발생
+    // console.log(childMessage);  // 오류 발생
 }
 printMessage();
 
 // 6. Return a value
+function sum(a, b)
+{
+    return a + b;
+}
+const result = sum(1, 2);
+console.log(`sum: ${sum(1, 2)}`);
+
+// 7. Early return, early exit
+// bad
+function upgradeUser(user)
+{
+    if(user.point > 10)
+    {
+        // long upgrade logic...
+    }
+}
+
+// good
+function upgradeUser(user)
+{
+    if (user.point <= 10)
+    {
+        return;
+    }
+    // long upgrade logic...
+}  // 조건이 맞지 않을 땐 빨리 함수를 return 하는 것이 좋음
+
+// First-class function
+// functions are treated like any other variable
+// can be assigned as a value to variable
+// can be passed as an argument to other functions.
+// can be returned by another function
+
+// 1. Function expression
+// a function declaration can be called earlier than it is defined. (hoisted)
+// a function expression is created when the execution reaches it.
+const print = function ()  // anonymous function
+{
+    console.log('print');
+};
+print();
+const printAgain = print;
+printAgain();
+const sumAgain = sum;
+console.log(sumAgain(1, 3));
+
+// 2. Callback function using function expression
+function randomQuiz(answer, printYes, printNo)
+{
+    if(answer === 'love you')
+    {
+        printYes();
+    }
+    else
+    {
+        printNo();
+    }
+}
+// anonymous function
+const printYes = function()
+{
+    console.log('yes!');
+};
+
+// named function
+// better debugging in debugger's stack traces
+// recursions
+const printNo = function print()
+{
+    console.log('no!');
+};
+randomQuiz('wrong', printYes, printNo);
+randomQuiz('love you', printYes, printNo);
+
+// Arrow function
+// always anonymous
+//const simplePrint = function ()
+//{
+//    console.log('simplePrint!');
+//};
+
+const simplePrint = () => console.log('simplePrint!');
+const add = (a, b) => a + b;
+const simpleMultiply = (a, b) =>
+{
+    // do something more
+    return a * b;
+};
+
+// IIFE: Immediately Invoked Function Expression
+(function hello()
+{
+    console.log('IIFE');
+})();   // 선언과 동시에 함수 호출
