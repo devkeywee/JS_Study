@@ -62,3 +62,51 @@ function Person(name, age)  // class에서 object를 만드는 것처럼 가능
     // return this;
 }
 const person5 = new Person('doong', 25);
+
+// 5. in operator: property existence check (key in obj)
+console.log('name' in doong);
+console.log('age' in doong);
+console.log('random' in doong);
+console.log(doong.random);
+
+// 6. for..in vs for..of
+// for (key in obj)
+console.clear();
+for (key in doong)
+{
+    console.log(key);
+}
+
+// for (value of iterable)
+const array = [1, 2, 4, 5];
+for (value of array)
+{
+    console.log(value);
+}
+
+// 7. Fun cloning
+// Object.assign(dest, [obj1, obj2, obj3...])
+const user = {name: 'doong', age: '25'};
+const user2 = user;
+user2.name = 'coder';
+console.log(user);
+
+// old way
+const user3 = {};
+for (key in user)
+{
+    user3[key] = user[key];
+}
+console.clear();
+console.log(user3);
+
+const user4 = {};
+Object.assign(user4, user);
+console.log(user4);
+
+// another example
+const fruit1 = {color: 'red'};
+const fruit2 = {color: 'blue', size: 'big'};
+const mixed = Object.assign({}, fruit1, fruit2);  // 뒤에 있는 애가 앞에 있는 애를 덮어씌움
+console.log(mixed.color);
+console.log(mixed.size);
